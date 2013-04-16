@@ -1,8 +1,8 @@
 ## Mardi Caab
 
-* 18 mars 2013 : Presentation emacs.
-* 8 maris 2013 : Kernel linux, bootloader et ramfs.
-* 16 avril 2013 : Presentation de Python et de Flask.
+* 18 mars 2013 : [Présentation emacs](prez-emacs.html).
+* 8 mars 2013 : Kernel linux, bootloader et ramfs.
+* 16 avril 2013 : Présentation de Python et de Flask.
 
 ## Install party
 

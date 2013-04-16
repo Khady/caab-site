@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>prez-emacs - CAAB</title>
+    <link href="static/style.css" type="text/css" rel="stylesheet"/> 
+  </head>
+
+  <body>
+    <header>
+      <div id="logo">
+        <h1>CAAB</h1>
+      </div>
+
+      <nav>
+        
+    <div id="bar">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+      
+        <li><a href="events.html">Events</a></li>
+      </ul>
+    </div>
+  
+      </nav>
+    </header>
+
+    <section>
+       <p><h2> Présentation emacs<a name="h2-Présentationemacs" class="anchor-toc"> </a></h2></p><p><h3> Configuration<a name="h3-Configuration" class="anchor-toc"> </a></h3></p><p><h4> Respecter la norme<a name="h4-Respecterlanorme" class="anchor-toc"> </a></h4></p><p>Pour ne pas avoir de problème avec les 80 colonnes ou les espaces en fin de ligne :</p><p><div class="ocaml"><pre><code><span class="keyword2">;</span><span class="keyword2">;</span> Whitespace mode <span class="keyword2">(</span>Eighty Column Rule<span class="keyword2">)</span>
+<span class="keyword2">(</span>require 'whitespace<span class="keyword2">)</span>
+<span class="keyword2">(</span>setq whitespace-style '<span class="keyword2">(</span>face empty tabs lines-tail trailing<span class="keyword2">)</span><span class="keyword2">)</span>
+<span class="keyword2">(</span>global-whitespace-mode t<span class="keyword2">)</span>
+</code></pre></div></p><p><h4> Petites configuration utiles<a name="h4-Petitesconfigurationutiles" class="anchor-toc"> </a></h4></p><p>Fichiers qui se mettent à jour automatiquement dans emacs (utile avec git/svn…)</p><p><div class="ocaml"><pre><code><span class="keyword2">;</span><span class="keyword2">;</span> Auto reload file <span class="keyword1">when</span> there is a change
+<span class="keyword2">(</span>global-auto-revert-mode t<span class="keyword2">)</span>
+</code></pre></div></p><p><div class="ocaml"><pre><code><span class="keyword2">(</span>defun kill-region-<span class="keyword2">or</span>-word <span class="keyword2">(</span><span class="keyword2">)</span>
+  <span class="keyword7">&quot;Call `kill-region' or `backward-kill-word' depending on
+whether or not a region is selected.&quot;</span>
+  <span class="keyword2">(</span>interactive<span class="keyword2">)</span>
+  <span class="keyword2">(</span><span class="keyword1">if</span> <span class="keyword2">(</span><span class="keyword4">and</span> transient-mark-mode mark-active<span class="keyword2">)</span>
+      <span class="keyword2">(</span>kill-region <span class="keyword2">(</span>point<span class="keyword2">)</span> <span class="keyword2">(</span>mark<span class="keyword2">)</span><span class="keyword2">)</span>
+    <span class="keyword2">(</span>backward-kill-word <span class="keyword8">1</span><span class="keyword2">)</span><span class="keyword2">)</span><span class="keyword2">)</span>
+<span class="keyword2">(</span>global-set-key <span class="keyword7">&quot;\C-w&quot;</span> 'kill-region-<span class="keyword2">or</span>-word<span class="keyword2">)</span>
+
+</code></pre></div></p><p>Utiliser y et n a la place de yes et no</p><p><div class="ocaml"><pre><code><span class="keyword2">(</span>fset 'yes-<span class="keyword2">or</span>-no-p 'y-<span class="keyword2">or</span>-n-p<span class="keyword2">)</span>
+</code></pre></div></p><p>Remplacer la selection (comportement par defaut sur une selection dans toutes les applications)</p><p><div class="ocaml"><pre><code><span class="keyword2">(</span>delete-selection-mode <span class="keyword8">1</span><span class="keyword2">)</span>
+</code></pre></div></p><p><h3> Plugins<a name="h3-Plugins" class="anchor-toc"> </a></h3></p><p><ul> <li> <p>Auto completion : auto-complete et yasnippet</p> </li><li> <p>Toujours avoir le bon nombre de parentheses, crochets… : autopair</p> </li><li> <p>Affichage à la sublime text : minimap</p> </li><li> <p>Annuler de manière visuelle : undo-tree</p> </li><li> <p>Thèmes : solarized, zenburn, ir-black…</p> </li> </ul></p><p>Ils sont tous disponibles avec package.el (de base dans emacs24, peut être installé sur emacs23).</p><p><h3> Exemples<a name="h3-Exemples" class="anchor-toc"> </a></h3></p><p><a href="http://github.com/khady/emacs.d">http://github.com/khady/emacs.d</a></p> 
+    </section>
+
+    <footer>
+      <a href="http://dev.isomorphis.me/stone">Stone λ-powered</a>
+    </footer>
+  </body>
+</html>
+
