@@ -1,5 +1,8 @@
 ## Présentation emacs
 
+"But even if TextMate 2 drops from the sky fully-formed and marveled at by all, Emacs will still be there, waiting. It will be there when the icecaps melt and the cities drown, when humanity destroys itself in fire and zombies, when the roaches finally achieve sentience, take over, and begin using computers themselves - at which point its various Ctrl-Meta key-chords will seem not merely satisfyingly ergonomic for the typical arthropod, but also direct evidence for the universe’s Intelligent Design by some six-legged, multi-jointed God."
+- Kieran Healy
+
 ### Configuration
 
 #### Buffers
@@ -20,6 +23,15 @@ Les changements de taille, avec `Alt + Shift` + une fleche
 (global-set-key (kbd "M-S-<down>") 'shrink-window)
 (global-set-key (kbd "M-S-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "M-S-<left>") 'shrink-window-horizontally)
+}}
+
+Vous connaissez surement deja les raccourcis pour split les windows, `C-x 2` et `C-x 3`.
+Mais il est aussi possible de preciser quelle taille doit faire le nouveau buffer.
+{{
+;; Faire une fenetre de 80 colonnes
+M-80 C-x 3
+;; Faire une fenetre de 20 lignes
+M-20 C-x 2
 }}
 
 #### Compilation
@@ -87,9 +99,26 @@ Afficher ou cacher ce qu'il y a encore 2 accolades
 (global-set-key [f6] 'hs-show-block)
 }}
 
+#### Couleurs
+
+Ne pas charger le meme theme si emacs est lance en mode graphique ou en nox
+{{
+(when window-system
+  (load-theme 'solarized-dark))
+}}
+
+Il existe un plugin pour changer la couleur d'un unique buffer, pour avoir pour exemple un theme par mode :
+[https://github.com/vic/color-theme-buffer-local]()
+
+Changer les couleurs utilisees par `ansi-term` :
+{{
+(setq ansi-term-color-vector [unspecified "#3f3f3f" "#cc9393" "#7f9f7f" "#f0dfaf" "#8cd0d3" "#dc8cc3" "#93e0e3" "#dcdccc"])
+}}
+
 ### Plugins
 
-* Auto completion : auto-complete et yasnippet
+* Auto completion : auto-complete et yasnippet ou [company-mode](http://company-mode.github.io/)
+* Speedbar dans la fenetre emacs (affichage de l'arborescence de fichiers) : [sr-speedbar](http://www.emacswiki.org/emacs/sr-speedbar.el)
 * Toujours avoir le bon nombre de parentheses, crochets… : autopair
 * Affichage à la sublime text : minimap
 * Annuler de manière visuelle : undo-tree
